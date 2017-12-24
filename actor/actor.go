@@ -1,16 +1,12 @@
 package actor
 
-type Name []string
-
-type ReactionHandler func(Message) (Message, error)
-
-type Strategy func(Message, error) ()
-
-type Dna struct {
-	Name Name
-	ReactionFunc ReactionHandler
+type Def struct {
+	In       interface{}
+	Params   interface{}
+	Behavior interface{}
 }
 
-type incarnation interface {
-
+func newActorContext(system *system, def Def, ref Ref) (Context, error) {
+	panic("TODO implement")
+	return Context{}, nil
 }

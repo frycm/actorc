@@ -1,10 +1,19 @@
 package actor
 
+type RefPath []string
+
+type RefProtocol string
+
+const (
+	Local = RefProtocol("local")
+)
+
 type Ref struct {
-	Demand <-chan uint
-	Tell chan<- Message
+	protocol RefProtocol
+	system SystemName
+	path RefPath
 }
 
-func (ref *Ref) NewResponseChan() (chan Message) {
-	return nil
+func UserRef(components... string) Ref {
+	return Ref{protocol:Local, path: append([]string{"user"}, components...)}
 }
